@@ -20,7 +20,6 @@ namespace UsabilityDynamics\WPPP {
          * Register Custom Post Types, meta and set their taxonomies 
          */
         $schema = $this->instance->get_schema( 'extra.schemas.model', true );
-        
         if( !empty( $schema ) && is_array( $schema ) ) {
           \UsabilityDynamics\Model::define( $schema );
         }
@@ -29,7 +28,6 @@ namespace UsabilityDynamics\WPPP {
          * Setup setting for plugin on admin panel 
          */
         $this->ui = new UI();
-        
       }
 
     }

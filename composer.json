@@ -74,23 +74,24 @@
                 "update_item": "l10n.update_ppage",
                 "view_item": "l10n.view_ppage"
               },
-              "description": "l10n.ppages_description",
-              "exclude_from_search": true,
-              "has_archive": false,
-              "hierarchical": false,
-              "menu_icon": false,
-              "menu_position": 5,
               "public": true,
-              "publicly_queryable": true,
-              "show_in_admin_bar": true,
-              "show_in_menu": true,
-              "show_in_nav_menus": true,
-              "show_ui": true,
+              "menu_position": 10,
+              "capability_type": "page",
+              "map_meta_cap": true,
+              "hierarchical": true,
+              "delete_with_user": true,
               "supports": [
-                "title",
-                "editor",
-                "excerpt"
+                "title", 
+                "editor", 
+                "author", 
+                "thumbnail", 
+                "page-attributes", 
+                "custom-fields", 
+                "revisions"
               ],
+              "rewrite": { 
+                "slug": "l10n.rewrite_slug"
+              },
               "can_export": true
             },
             "meta": []

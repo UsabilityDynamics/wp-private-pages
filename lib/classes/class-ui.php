@@ -29,7 +29,12 @@ namespace UsabilityDynamics\WPPP {
       public function __construct() {
         parent::__construct();
         
-        /* Setup Admin Interface */
+        /* Add metaboxes hook */
+        add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+        
+        /** 
+         * Setup Admin Settings Interface 
+         */
         $this->ui = new \UsabilityDynamics\UI\Settings( $this->instance->settings, $this->instance->get_schema( 'extra.schemas.ui', true ) );
         
         /**
@@ -62,7 +67,7 @@ namespace UsabilityDynamics\WPPP {
       }
       
       /**
-       * 
+       * Custom UI on Settings page
        */
       public function custom_ui() {
         
@@ -105,6 +110,27 @@ namespace UsabilityDynamics\WPPP {
             break;
         }
         
+      }
+      
+      /**
+       * Register metaboxes.
+       *
+       * @global type $post
+       * @global type $wpdb
+       */
+      public function add_meta_boxes() {
+        add_meta_box( 'private_page_assigned_users', __( 'Assigned Users', $this->get( 'domain' ) ), array( $this, 'render_metabox' ), 'private_page', 'side', 'high' );
+      }
+      
+      /**
+       * 
+       */
+      public function render_metabox( $post, $metabox ) {
+        switch( $metabox[ 'id' ] ) {
+          case 'private_page_assigned_users':
+            $this->get_template_part( 'admin/metaboxes/assigned_users', array( 'post' => $post ) );
+            break;
+        }
       }
       
       

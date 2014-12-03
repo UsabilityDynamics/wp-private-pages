@@ -77,13 +77,13 @@ namespace UsabilityDynamics\WPPP {
           'search_ppages'       => sprintf( __( 'Search %s', $this->domain ), $this->label( 'plural' ) ),
           'update_ppage'        => sprintf( __( 'Update %s', $this->domain ), $this->label() ),
           'view_ppage'          => sprintf( __( 'View %s', $this->domain ), $this->label() ),
-          'ppages_description'  => __( 'WP Private Pages.', $this->domain ),
           'settings_page_title' => __( 'Settings', $this->domain ),
           'settings'            => __( 'Settings', $this->domain ),
           'white_labels'        => __( 'White Labels', $this->domain ),
           'singular'            => __( 'Singular', $this->domain ),
           'plural'              => __( 'Plural', $this->domain ),
           'general_settings'    => __( 'General Plugin\'s Settings', $this->domain ),
+          'rewrite_slug'        => sprintf( '%s', $this->slug() ),
         ) );
       }
       
@@ -102,6 +102,17 @@ namespace UsabilityDynamics\WPPP {
           }
         }
         return $result;
+      }
+      
+      /**
+       * Returns Rewrite Slug
+       * 
+       * @param string $key Values: 'singular', 'plural'. Default is 'singular'.
+       * @return string
+       */
+      public function slug() {
+        $result = $this->get( "labels.singular" );
+        return empty( $result ) ? 'private_page' : sanitize_key( $result );
       }
       
       /**
@@ -158,6 +169,7 @@ namespace UsabilityDynamics\WPPP {
             'name' => $this->name,
             'version' => $this->args[ 'version' ],
             'domain' => $this->domain,
+            'prefix' => 'wppp_',
           )
         ) );
         /* Probably add default settings */
