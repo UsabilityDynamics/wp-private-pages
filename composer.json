@@ -19,7 +19,9 @@
   },
   "require": {
     "php": ">=5.3",
-    "composer/installers": "~1.0",
+    "usabilitydynamics/lib-model": "0.4.0",
+    "usabilitydynamics/lib-settings": "0.2.3",
+    "usabilitydynamics/lib-ui": "0.2.1",
     "usabilitydynamics/lib-wp-bootstrap": "*"
   },
   "require-dev": {
@@ -50,6 +52,93 @@
       "licenses" : {
         "client" : false,
         "product" : false
+      },
+      "model": {
+        "types": {
+          "private_page": {
+            "key": "private_page",
+            "data": {
+              "capability_type": "page",
+              "label": "l10n.ppage",
+              "labels": {
+                "add_new": "l10n.new_ppage",
+                "add_new_item": "l10n.create_ppage",
+                "all_items": "l10n.all_ppages",
+                "edit_item": "l10n.edit_ppage",
+                "menu_name": "l10n.ppages",
+                "name": "l10n.ppages",
+                "not_found": "l10n.no_ppages_found",
+                "not_found_in_trash": "l10n.no_ppages_in_trash",
+                "search_items": "l10n.search_ppages",
+                "singular_name": "l10n.ppages",
+                "update_item": "l10n.update_ppage",
+                "view_item": "l10n.view_ppage"
+              },
+              "description": "l10n.ppages_description",
+              "exclude_from_search": true,
+              "has_archive": false,
+              "hierarchical": false,
+              "menu_icon": false,
+              "menu_position": 5,
+              "public": true,
+              "publicly_queryable": true,
+              "show_in_admin_bar": true,
+              "show_in_menu": true,
+              "show_in_nav_menus": true,
+              "show_ui": true,
+              "supports": [
+                "title",
+                "editor",
+                "excerpt"
+              ],
+              "can_export": true
+            },
+            "meta": []
+          }
+        },
+        "meta": []
+      },
+      "settings": {
+        "labels": {
+          "singular": "l10n.ppage",
+          "plural": "l10n.ppages"
+        }
+      },
+      "ui": {
+        "configuration": {
+          "secondary_menu": {
+            "page_title": "l10n.settings_page_title",
+            "menu_title": "l10n.settings",
+            "parent_slug": "edit.php?post_type=private_page",
+            "menu_slug": "settings"
+          }
+        },
+        "menu": {
+          "general": {
+            "id": "general",
+            "name": "l10n.general",
+            "desc": "l10n.general_settings"
+          }
+        },
+        "sections": {
+          "white_labels": {
+            "id": "white_labels",
+            "name": "l10n.white_labels",
+            "menu": "general"
+          }
+        },
+        "fields": [
+          {
+            "id": "labels.singular",
+            "name": "l10n.singular",
+            "section": "white_labels"
+          },
+          {
+            "id": "labels.plural",
+            "name": "l10n.plural",
+            "section": "white_labels"
+          }
+        ]
       }
     }
   }
