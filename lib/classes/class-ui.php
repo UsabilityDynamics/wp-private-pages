@@ -29,6 +29,9 @@ namespace UsabilityDynamics\WPPP {
       public function __construct() {
         parent::__construct();
         
+        /* Handle Scripts and Styles */
+        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+        
         /* Add metaboxes hook */
         add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
         
@@ -108,6 +111,23 @@ namespace UsabilityDynamics\WPPP {
           case 'ud:ui:settings:view:section:sync:bottom':
             // Add custom content here
             break;
+        }
+        
+      }
+      
+      /**
+       * Register admin Scripts and Styles.
+       *
+       */
+      public function admin_enqueue_scripts() {
+        $screen = get_current_screen();
+        
+        switch( $screen->id ) {
+          
+          case 'private_page':
+            wp_enqueue_style( 'wppp-edit-post', $this->instance->path( 'static/styles/admin/edit-post' . ( WP_DEBUG ? '.dev' : '' ) . '.css' ) );
+            break;
+          
         }
         
       }

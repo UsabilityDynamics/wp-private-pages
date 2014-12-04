@@ -77,13 +77,14 @@ namespace UsabilityDynamics\WPPP {
           'search_ppages'       => sprintf( __( 'Search %s', $this->domain ), $this->label( 'plural' ) ),
           'update_ppage'        => sprintf( __( 'Update %s', $this->domain ), $this->label() ),
           'view_ppage'          => sprintf( __( 'View %s', $this->domain ), $this->label() ),
-          'settings_page_title' => __( 'Settings', $this->domain ),
+          'settings_page_title' => __( 'WP Private Pages Settings', $this->domain ),
           'settings'            => __( 'Settings', $this->domain ),
           'white_labels'        => __( 'White Labels', $this->domain ),
           'singular'            => __( 'Singular', $this->domain ),
           'plural'              => __( 'Plural', $this->domain ),
           'general_settings'    => __( 'General Plugin\'s Settings', $this->domain ),
           'rewrite_slug'        => sprintf( '%s', $this->slug() ),
+          'general'             => __( 'General', $this->domain ),
         ) );
       }
       

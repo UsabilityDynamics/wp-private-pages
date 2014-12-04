@@ -1,0 +1,6 @@
+.wp-private-page-users {
+  max-height: 200px;
+  padding: 0 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}

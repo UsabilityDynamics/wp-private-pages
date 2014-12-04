@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Private Pages
  * Plugin URI: https://usabilitydynamics.com
- * Description: WordPress Private Pages
+ * Description: WordPress Private Pages. The custom posts are shown on Front End only for assigned users.
  * Author: Usability Dynamics, Inc.
  * Version: 1.0.0
  * Text Domain: wp_private_pages

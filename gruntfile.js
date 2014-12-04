@@ -47,13 +47,17 @@ module.exports = function build( grunt ) {
           yuicompress: true,
           relativeUrls: true
         },
-        files: {}
+        files: {
+          'static/styles/admin/edit-post.css': [ 'static/styles/src/admin/edit-post.less' ]
+        }
       },
       development: {
         options: {
           relativeUrls: true
         },
-        files: {}
+        files: {
+          'static/styles/admin/edit-post.dev.css': [ 'static/styles/src/admin/edit-post.less' ]
+        }
       }
     },
 
@@ -64,7 +68,8 @@ module.exports = function build( grunt ) {
       },
       less: {
         files: [
-          'static/styles/src/*.*'
+          'static/styles/src/*.*',
+          'static/styles/src/admin/*.*'
         ],
         tasks: [ 'less' ]
       },
