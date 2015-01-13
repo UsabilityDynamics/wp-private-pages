@@ -72,7 +72,9 @@
                 "search_items": "l10n.search_ppages",
                 "singular_name": "l10n.ppages",
                 "update_item": "l10n.update_ppage",
-                "view_item": "l10n.view_ppage"
+                "view_item": "l10n.view_ppage",
+                "parent_item_colon": "l10n.parent_item_colon",
+                "parent": "l10n.parent"
               },
               "public": true,
               "menu_position": 10,
@@ -81,15 +83,15 @@
               "hierarchical": true,
               "delete_with_user": true,
               "supports": [
-                "title", 
-                "editor", 
-                "author", 
-                "thumbnail", 
-                "page-attributes", 
-                "custom-fields", 
+                "title",
+                "editor",
+                "author",
+                "thumbnail",
+                "page-attributes",
+                "custom-fields",
                 "revisions"
               ],
-              "rewrite": { 
+              "rewrite": {
                 "slug": "l10n.rewrite_slug"
               },
               "can_export": true
@@ -103,6 +105,9 @@
         "labels": {
           "singular": "l10n.ppage",
           "plural": "l10n.ppages"
+        },
+        "access": {
+          "hierarchical": "true"
         }
       },
       "ui": {
@@ -126,6 +131,11 @@
             "id": "white_labels",
             "name": "l10n.white_labels",
             "menu": "general"
+          },
+          "access": {
+            "id": "access",
+            "name": "l10n.access_rules",
+            "menu": "general"
           }
         },
         "fields": [
@@ -138,6 +148,12 @@
             "id": "labels.plural",
             "name": "l10n.plural",
             "section": "white_labels"
+          },
+          {
+            "id": "access.hierarchical",
+            "name": "l10n.hierarchical_access",
+            "desc": "l10n.hierarchical_access_desc",
+            "section": "access"
           }
         ]
       }
