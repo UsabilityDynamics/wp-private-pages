@@ -125,6 +125,9 @@ namespace UsabilityDynamics\WPPP {
         $instance = ud_get_wp_private_pages();
         /* Get list of all assigned users */
         $user_ids = get_post_meta( $post_id, $instance->get( 'prefix' ) . 'assigned_users', true );
+        if( empty( $user_ids ) || !is_array( $user_ids ) ) {
+          return false;
+        }
         return in_array( $user_id, $user_ids ) ? true : false;
       }
       

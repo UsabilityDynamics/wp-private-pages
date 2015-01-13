@@ -47,11 +47,37 @@ namespace UsabilityDynamics\WPPP {
           ( isset( $wp_query->query[ 'post_type' ] ) && $wp_query->query[ 'post_type' ] == 'private_page' ) ||
           ( isset( $wp_query->query_vars[ 'post_type' ] ) && $wp_query->query_vars[ 'post_type' ] == 'private_page' )
         ) {
-          /* Make sure user is logged in. In other case we will redirect user to Home page */
+          /* Make sure user is logged in. In other case we maybe redirect user to Home page */
           if( !is_user_logged_in() ) {
-            wp_redirect( home_url() );
-            exit();
+            if( apply_filters( 'wppp_redirect_from_prohibited_page', false ) ) {
+              wp_redirect( home_url() );
+              exit();  
+            }
           }
+          /** 
+           * If Hierarchical Access is enabled, 
+           * we try to determine if user is assigned to parent post.
+           * If not, we do redirection to parent post. 
+           */
+          if( 
+            !current_user_can( 'manage_options' ) && 
+            $this->instance->get( 'access.hierarchical' ) === 'true' && 
+            is_object( $wp_query->post ) && 
+            $wp_query->post->post_parent > 0 
+          ) {
+            $post = get_post( $wp_query->post->post_parent );
+            if( !is_object( $post ) || !isset( $post->ID ) || $post->post_type !== 'private_page' ) {
+              /* WTF? */
+              wp_redirect( home_url() );
+              exit();
+            }
+            if( !Utility::is_user_assigned( get_current_user_id(), $post->ID ) ) {
+              /* Redirect user to parent page */
+              wp_redirect( get_permalink( $post->ID ) );
+              exit();
+            }
+          }
+          
         }
       }
       
@@ -63,17 +89,9 @@ namespace UsabilityDynamics\WPPP {
         
         if( $post->post_type == 'private_page' ) {
           
-          /** 
-           * It should not happen for single post page. But it can on using the_content in other places. 
-           * So just return blank by default 
-           */
-          if( !is_user_logged_in() ) {
-            return apply_filters( 'wppp_the_content_for_not_logged_in_user', '', $content );
-          }
-          
           /* Detemine if user can view content */
           if( !current_user_can( 'manage_options' ) && !Utility::is_user_assigned() ) {
-            $c = get_template_part( 'wppp', 'blocked-info' );
+            $c = $this->get_template_part( 'page-prohibited' );
             $content = apply_filters( 'wppp_the_content_blocked_info', $c, $content );
           }
           

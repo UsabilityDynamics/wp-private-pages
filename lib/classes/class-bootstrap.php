@@ -66,25 +66,28 @@ namespace UsabilityDynamics\WPPP {
        */
       public function get_localization() {
         return apply_filters( 'wp_private_pages_localization', array(
-          'ppage'               => sprintf( '%s', $this->label() ),
-          'ppages'              => sprintf( '%s', $this->label( 'plural' ) ),
-          'new_ppage'           => sprintf( __( 'New %s', $this->domain ), $this->label() ),
-          'create_ppage'        => sprintf( __( 'Create %s', $this->domain ), $this->label() ),
-          'all_ppages'          => sprintf( __( 'All %s', $this->domain ), $this->label( 'plural' ) ),
-          'edit_ppage'          => sprintf( __( 'Edit %s', $this->domain ), $this->label() ),
-          'no_ppages_found'     => sprintf( __( 'No %s found', $this->domain ), $this->label( 'plural' ) ),
-          'no_ppages_in_trash'  => sprintf( __( 'No %s in trash', $this->domain ), $this->label( 'plural' ) ),
-          'search_ppages'       => sprintf( __( 'Search %s', $this->domain ), $this->label( 'plural' ) ),
-          'update_ppage'        => sprintf( __( 'Update %s', $this->domain ), $this->label() ),
-          'view_ppage'          => sprintf( __( 'View %s', $this->domain ), $this->label() ),
-          'settings_page_title' => __( 'WP Private Pages Settings', $this->domain ),
-          'settings'            => __( 'Settings', $this->domain ),
-          'white_labels'        => __( 'White Labels', $this->domain ),
-          'singular'            => __( 'Singular', $this->domain ),
-          'plural'              => __( 'Plural', $this->domain ),
-          'general_settings'    => __( 'General Plugin\'s Settings', $this->domain ),
-          'rewrite_slug'        => sprintf( '%s', $this->slug() ),
-          'general'             => __( 'General', $this->domain ),
+          'ppage'                    => sprintf( '%s', $this->label() ),
+          'ppages'                   => sprintf( '%s', $this->label( 'plural' ) ),
+          'new_ppage'                => sprintf( __( 'New %s', $this->domain ), $this->label() ),
+          'create_ppage'             => sprintf( __( 'Create %s', $this->domain ), $this->label() ),
+          'all_ppages'               => sprintf( __( 'All %s', $this->domain ), $this->label( 'plural' ) ),
+          'edit_ppage'               => sprintf( __( 'Edit %s', $this->domain ), $this->label() ),
+          'no_ppages_found'          => sprintf( __( 'No %s found', $this->domain ), $this->label( 'plural' ) ),
+          'no_ppages_in_trash'       => sprintf( __( 'No %s in trash', $this->domain ), $this->label( 'plural' ) ),
+          'search_ppages'            => sprintf( __( 'Search %s', $this->domain ), $this->label( 'plural' ) ),
+          'update_ppage'             => sprintf( __( 'Update %s', $this->domain ), $this->label() ),
+          'view_ppage'               => sprintf( __( 'View %s', $this->domain ), $this->label() ),
+          'settings_page_title'      => __( 'WP Private Pages Settings', $this->domain ),
+          'settings'                 => __( 'Settings', $this->domain ),
+          'white_labels'             => __( 'White Labels', $this->domain ),
+          'singular'                 => __( 'Singular', $this->domain ),
+          'plural'                   => __( 'Plural', $this->domain ),
+          'general_settings'         => __( 'General Plugin\'s Settings', $this->domain ),
+          'rewrite_slug'             => sprintf( '%s', $this->slug() ),
+          'general'                  => __( 'General', $this->domain ),
+          'access_rules'             => __( 'Permissions Rules', $this->domain ),
+          'hierarchical_access'      => __( 'Hierarchical Access', $this->domain ),
+          'hierarchical_access_desc' => __( 'Access to child pages is defined by parent page. Enabled values \'true\',\'false\'', $this->domain ),
         ) );
       }
       
@@ -171,6 +174,7 @@ namespace UsabilityDynamics\WPPP {
             'version' => $this->args[ 'version' ],
             'domain' => $this->domain,
             'prefix' => 'wppp_',
+            'post_type' => 'private_page',
           )
         ) );
         /* Probably add default settings */
